@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Web Scrape</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="lux.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Be a Martian!</h1>
+      <p>Pictures. Tweets. News.</p>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Up-to-date Information!</a></p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <h3>Latest News From Mars</h3>
+        <h4>{{dict.mars_news_title}}</h4>
+        <p> {{dict.mars_news_teaser}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8 col-md-12 col-sm-12">
+        <div>
+          <h1> Featured Picture </h1>
+        </div>
+
+        <div>
+          <img style="height: 500px; max-width: 500px", src= "{{dict.jpl_image}}">
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-12 col-sm-12">
+        <div class="card border-primary mb-3" style="max-width: 100%;">
+          <div class="card-header">Current Weather</div>
+            <div class="card-body">
+              <p class="card-text">{{dict.mars_weather_tweet}}</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4> Mars Fun Facts </h4>
+          <br>
+        </div>
+        <div>
+          {% for row in dict.mars_facts_table %}
+            {{row|safe}}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <h3>Martian Hemispheres Are Pretty!</h3>
+        <br>
+        <br>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="card mb-3">
+          <h5 class="card-header">Cerberus</h6>
+          <a href="{{dict.mars_hemispheres[0]['img_url']}}"> <img style="height: 500px; max-width: 100%; display: block;" src="{{dict.mars_hemispheres[0]['img_url']}}"> </a>
+        </div>
+        <div class="card mb-3">
+          <h5 class="card-header">Schiaparelli</h6>
+            <a href="{{dict.mars_hemispheres[1]['img_url']}}"> <img style="height: 500px; max-width: 100%; display: block;" src="{{dict.mars_hemispheres[1]['img_url']}}"> </a>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="card mb-3">
+          <h5 class="card-header">Syrtis Major</h6>
+          <a href="{{dict.mars_hemispheres[2]['img_url']}}"> <img style="height: 500px; max-width: 100%; display: block;" src="{{dict.mars_hemispheres[2]['img_url']}}"> </a>
+        </div>
+        <div class="card mb-3">
+          <h5 class="card-header">Valles Marineris</h6>
+            <a href="{{dict.mars_hemispheres[3]['img_url']}}"> <img style="height: 500px; max-width: 100%; display: block;" src="{{dict.mars_hemispheres[3]['img_url']}}"> </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
